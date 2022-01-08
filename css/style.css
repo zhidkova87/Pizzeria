@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+main  {
+    background-image: url("../img/achtergrond.jpg");
+    background-size: cover;
+    padding-top: 50px;
+
+}
+#logo {
+    margin: 0 0 -80px 10px;
+
+}

@@ -5,9 +5,7 @@ spl_autoload_register();
 
 session_start();
 
-use Business\ProductService;
+$aangemeld = false;
 
-$productSvc = new ProductService();
-$producten = $productSvc->getAllProducten();
 
 include_once("Presentation/indexPagina.php");
