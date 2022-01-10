@@ -39,7 +39,7 @@ class PlaatsDAO {
             $stmt = $dbh->prepare("select * from plaatsen where plaatsId = :plaatsId");
             $stmt->bindValue(":plaatsId", $plaatsId);
             $stmt->execute();
-            $rij = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $rij = $stmt->fetch(PDO::FETCH_ASSOC);
             $dbh = null;
 
             return $this->createPlaats($rij);
@@ -50,7 +50,7 @@ class PlaatsDAO {
         return null;
     }
 
-    public function createPlaats($rij): Plaats
+    public function createPlaats($rij): ?Plaats
     {
         return new Plaats((int) $rij["plaatsId"], $rij["postcode"], $rij["gemeente"]);
     }

@@ -3,10 +3,12 @@
 main  {
     background-image: url("../img/achtergrond.jpg");
     background-size: cover;
-    padding-top: 50px;
+    padding: 150px 0 150px 0;
 
 }
 #logo {
     margin: 0 0 -80px 10px;
-
+}
+h4 {
+    border-bottom: 1px lightgray solid ;
 }

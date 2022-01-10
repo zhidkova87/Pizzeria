@@ -39,7 +39,7 @@ class ProductDAO {
             $stmt = $dbh->prepare("select * from producten where productId = :productId");
             $stmt->bindValue(":productId", $productId);
             $stmt->execute();
-            $rij = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $rij = $stmt->fetch(PDO::FETCH_ASSOC);
             $dbh = null;
             return $this->createProduct($rij);
 
@@ -49,7 +49,7 @@ class ProductDAO {
         return null;
         }
 
-        public function createProduct($rij): Product
+        public function createProduct($rij): ?Product
         {
             return new Product((int) $rij["productId"], $rij["naam"], (float) $rij["prijs"], $rij["omschrijving"], (float)$rij["promoprijs"], (bool)$rij["beschikbaar"], $rij["foto"]);
         }

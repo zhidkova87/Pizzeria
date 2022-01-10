@@ -15,12 +15,11 @@ class ProductService {
     {
         $this->productDAO = new ProductDAO();
     }
-
     public function haalProductOp(int $productId): ?Product
     {
         return $this->productDAO->getById($productId);
     }
-    public function getAllProducten(): ?array
+    public function toonProductenOverzicht(): ?array
     {
         return $this->productDAO->getAll();
     }
