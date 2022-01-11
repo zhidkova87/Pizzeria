@@ -7,10 +7,12 @@ use Business\ProductService;
 
 session_start();
 
-if(!isset($_SESSION["klant"])) {
+if(!isset($_SESSION["klantAccount"]))
+{
     $aangemeld = false;
+} else {
+    $aangemeld = true;
 }
-
 $bestelMoment = new DateTime();
 $productSvc = new ProductService();
 

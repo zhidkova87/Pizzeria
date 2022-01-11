@@ -10,5 +10,22 @@ main  {
     margin: 0 0 -80px 10px;
 }
 h4 {
+    padding-bottom: 10px;
     border-bottom: 1px lightgray solid ;
+}
+#about {
+    padding: 150px 0 150px 0;
+}
+form#gegevens {
+    padding: 50px 200px;
+
+}
+div#parent {
+    background: transparent ;
+    opacity: 0.8;
+}
+
+div#bedankt {
+    padding: 100px 0;
+
 }

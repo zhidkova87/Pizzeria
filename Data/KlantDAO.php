@@ -36,10 +36,10 @@ class KlantDAO {
             $stmt = $dbh->prepare("select * from klanten where klantId = :klantId");
             $stmt->bindValue(":klantId", $klantId);
             $stmt->execute();
-            $rij = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $rij = $stmt->fetch(PDO::FETCH_ASSOC);
             $dbh = null;
             $adres = new AdresDAO();
-            return new Klant((int)$rij["klantId"], $rij["email"], $rij["wachtwoord"], $rij["familienaam"], $rij["voornaam"], $adres->getById($rij["adresId"]), $rij["promo"], $rij["opmerking"]);;
+            return new Klant((int)$rij["klantId"], $rij["email"], $rij["wachtwoord"], $rij["familienaam"], $rij["voornaam"], $adres->getById($rij["adresId"]), $rij["telefoonnummer"], (bool)$rij["promo"], $rij["opmerking"]);;
 
         }  catch (\PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
@@ -48,7 +48,7 @@ class KlantDAO {
     }
 
 
-    public function createKlant(string $email, string $wachtwoord, string $familienaam, string $voornaam, Adres $adres, bool $promo, string $opmerking): ?Klant
+    public function createKlant(string $email, string $wachtwoord, string $familienaam, string $voornaam, Adres $adres, string $telefoonnummer, bool $promo, string $opmerking): ?Klant
     {
 
         try {
@@ -57,19 +57,20 @@ class KlantDAO {
                 throw new ClientAlreadyExcistsException();
             }
                 $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
-                $stmt = $dbh->prepare("insert into klanten (email, wachtwoord, familienaam, voornaam, adresId, promo, opmerking) values (:email, :wachtwoord, :familienaam, :voornaam, :adresId, :promo, :opmerking)");
+                $stmt = $dbh->prepare("insert into klanten (email, wachtwoord, familienaam, voornaam, adresId, telefoonnummer, promo, opmerking) values (:email, :wachtwoord, :familienaam, :voornaam, :adresId, :telefoonnummer, :promo, :opmerking)");
                 $stmt->bindValue(":email", $email);
                 $stmt->bindValue(":wachtwoord", password_hash($wachtwoord, PASSWORD_DEFAULT));
                 $stmt->bindValue(":familienaam", $familienaam);
                 $stmt->bindValue(":voornaam", $voornaam);
                 $stmt->bindValue(":adresId", $adres->getAdresId());
+                $stmt->bindValue(":telefoonnummer", $telefoonnummer);
                 $stmt->bindValue(":promo", false);
                 $stmt->bindValue(":opmerking", $opmerking);
                 $stmt->execute();
                 $klantId = $dbh->lastInsertId();
                 $dbh = null;
 
-                return new Klant((int)$klantId, $email, $wachtwoord, $familienaam, $voornaam, $adres, false, $opmerking);
+                return new Klant((int)$klantId, $email, $wachtwoord, $familienaam, $voornaam, $adres, $telefoonnummer, false, $opmerking);
 
             } catch (\PDOException $e) {
                 print "Error!: " . $e->getMessage() . "<br/>";
@@ -97,7 +98,7 @@ class KlantDAO {
             }
             $dbh = null;
             $adres = new AdresDAO();
-            return new Klant((int)$rij["klantId"], $rij["email"], $rij["wachtwoord"], $rij["familienaam"], $rij["voornaam"], $adres->getById($rij["adresId"]), $rij["promo"], $rij["opmerking"]);
+            return new Klant((int)$rij["klantId"], $rij["email"], $rij["wachtwoord"], $rij["familienaam"], $rij["voornaam"], $adres->getById($rij["adresId"]), $rij["telefoonnummer"], (bool)$rij["promo"], $rij["opmerking"]);
 
 
         } catch (\PDOException $e) {
@@ -106,4 +107,25 @@ class KlantDAO {
         return null;
     }
 
+    public function updateKlant(Klant $klant)
+    {
+        try {
+            $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+            $stmt = $dbh->prepare("update klanten SET email = :email, familienaam = :familienaam, voornaam = :voornaam, 
+                   telefoonnummer = :telefoonnummer, opmerking = :opmerking");
+            $stmt->bindValue(":email", $klant->getEmail());
+            $stmt->bindValue(":familienaam", $klant->getFamilienaam());
+            $stmt->bindValue(":voornaam", $klant->getVoornaam());
+            $stmt->bindValue(":telefoonnummer", $klant->getTelefoonnummer());
+            $stmt->bindValue(":opmerking", $klant->getOpmerking());
+
+            $stmt->execute();
+            $dbh = null;
+
+
+        } catch (\PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        return null;
+    }
 }

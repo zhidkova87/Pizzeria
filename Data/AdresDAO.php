@@ -40,7 +40,7 @@ class AdresDAO {
             $stmt = $dbh->prepare("select * from adressen where adresId = :adresId");
             $stmt->bindValue(":adresId", $adresId);
             $stmt->execute();
-            $rij = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $rij = $stmt->fetch(PDO::FETCH_ASSOC);
             $dbh = null;
             return new Adres((int) $rij["adresId"], $rij["straat"], $rij["huisnummer"], $rij["bus"], $plaats->getById($rij["plaatsId"]));
 
@@ -50,5 +50,23 @@ class AdresDAO {
         return null;
     }
 
+    public function updateAdres(Adres $adres)
+    {
+        try {
+            $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+            $stmt = $dbh->prepare("update adressen SET straat = :straat, huisnummer = :huisnummer, 
+                   bus = :bus, plaatsId = :plaatsId");
+            $stmt->bindValue(":straat", $adres->getStraat());
+            $stmt->bindValue(":huisnummer", $adres->getHuisnummer());
+            $stmt->bindValue(":bus", $adres->getBus());
+            $stmt->bindValue(":plaatsId", $adres->getPlaats()->getPlaatsId());
+
+            $stmt->execute();
+            $dbh = null;
+    } catch (\PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        return null;
+    }
 
 }

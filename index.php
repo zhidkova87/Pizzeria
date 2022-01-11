@@ -5,7 +5,11 @@ spl_autoload_register();
 
 session_start();
 
-$aangemeld = false;
-
+if(!isset($_SESSION["klantAccount"]))
+{
+    $aangemeld = false;
+} else {
+    $aangemeld = true;
+}
 
 include_once("Presentation/indexPagina.php");

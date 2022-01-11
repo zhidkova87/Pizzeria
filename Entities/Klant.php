@@ -10,6 +10,7 @@ class Klant {
     private string $familienaam;
     private string $voornaam;
     private Adres $adres;
+    private string $telefoonnummer;
     private bool $promo;
     private string $opmerking;
 
@@ -23,7 +24,7 @@ class Klant {
      * @param Adres $adres
      * @param bool $promo
      */
-    public function __construct(int $klantId, string $email, string $wachtwoord, string $familienaam, string $voornaam, Adres $adres, bool $promo, string $opmerking)
+    public function __construct(int $klantId, string $email, string $wachtwoord, string $familienaam, string $voornaam, Adres $adres, string $telefoonnummer, bool $promo, string $opmerking)
     {
         $this->klantId = $klantId;
         $this->email = $email;
@@ -31,6 +32,7 @@ class Klant {
         $this->familienaam = $familienaam;
         $this->voornaam = $voornaam;
         $this->adres = $adres;
+        $this->telefoonnummer = $telefoonnummer;
         $this->promo = $promo;
         $this->opmerking = $opmerking;
     }
@@ -130,6 +132,23 @@ class Klant {
     {
         $this->adres = $adres;
     }
+
+    /**
+     * @return string
+     */
+    public function getTelefoonnummer(): string
+    {
+        return $this->telefoonnummer;
+    }
+
+    /**
+     * @param string $telefoonnummer
+     */
+    public function setTelefoonnummer(string $telefoonnummer): void
+    {
+        $this->telefoonnummer = $telefoonnummer;
+    }
+
 
     /**
      * @return bool

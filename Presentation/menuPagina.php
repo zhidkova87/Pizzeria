@@ -29,8 +29,10 @@ require_once("header.php");
     </article>
     <aside class="col-lg-3 text-center bg-light p-3">
         <h4>Winkelmandje:</h4>
+        <br/>
              <?php
              $total = 0;
+             if(!empty($_SESSION["winkelmandje"])) {
              foreach ($_SESSION["winkelmandje"] as $key => $value) { ?>
                 <div class="row p-3 text-start">
                     <div class="col-6">
@@ -38,11 +40,11 @@ require_once("header.php");
                     </div>
                  <div class="col-3">
                      <form action="menu.php" method="post">
-                         <button class="btn btn-outline-primary btn-sm" name="btnMin" value="<?php echo $key;?>">-</button>
-                         <button class="btn btn-outline-primary btn-sm" name="btnPlus" value="<?php echo $key;?>">+</button>
+                         <button class="btn btn-outline-secondary btn-sm" name="btnMin" value="<?php echo $key;?>">-</button>
+                         <button class="btn btn-outline-secondary btn-sm" name="btnPlus" value="<?php echo $key;?>">+</button>
                      </form>
                  </div>
-                    <div class="col-3">
+                    <div class="col-3 text-end">
                         <p>€<?php echo " " . $sub = $value * $productSvc->haalProductOp($key)->getPrijs();?></p>
                     </div>
                 </div>
@@ -50,12 +52,11 @@ require_once("header.php");
              $total += $sub;
              } ?>
         </br>
-        <?php if(isset($_SESSION["winkelmandje"])) { ?>
         <div class="text-center">
             <h6>Total: €<?php echo " " . $total;?></h6>
         </div>
         <form action="menu.php" method="post">
-            <button class="btn btn-primary" name="btnAfrekenen">Afrekenen</button>
+            <button class="btn btn-secondary btn-sm" name="btnAfrekenen">Afrekenen</button>
         </form>
         <?php } else {?>
             <h6>Uw winkelmandje is leeg.</h6>

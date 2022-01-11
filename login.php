@@ -12,21 +12,25 @@ use Exceptions\InvalidPasswordException;
 if(!isset($_SESSION["klantAccount"]))
 {
     $aangemeld = false;
+} else {
+    $aangemeld = true;
 }
+
 
 $klantSvc = new KlantService();
 $plaatsSvc = new PlaatsService();
 $adresSvc = new AdresService();
 $error = "";
 
-if (isset($_GET["action"]) && ($_GET["action"]) === "login") {
+if (isset($_GET["action"]) && ($_GET["action"]) === "aanmelden") {
     $email = trim($_POST["txtEmail"]);
     $wachtwoord = $_POST["txtWachtwoord"];
 
     try {
         $klantAccount = $klantSvc->loginKlant($email, $wachtwoord);
-        //$_SESSION["klantAccount"] = serialize($klantAccount);
+        $_SESSION["klantAccount"] = serialize($klantAccount);
         $_COOKIE["klantEmail"] = $email;
+        header("location: afrekenen.php");
 
     } catch (UserNotFoundException $e) {
         $error = "Klant bestaat niet.";
@@ -36,6 +40,7 @@ if (isset($_GET["action"]) && ($_GET["action"]) === "login") {
         $error = "Onbekende fout: kan niet inloggen";
     }
 }
+
 if (isset($_GET["action"]) && $_GET["action"] === "registreren") {
     $familienaam = $_POST["txtFamilienaam"];
     $voornaam = $_POST["txtVoornaam"];
@@ -49,10 +54,14 @@ if (isset($_GET["action"]) && $_GET["action"] === "registreren") {
     $wachtwoord = $_POST["txtWachtwoord"];
     try {
         $adres = $adresSvc->createAdres($straat, $huisnummer, $bus, $postcode);
-        $klantAccount = $klantSvc->registreerKlant($email, $wachtwoord, $familienaam, $voornaam, $adres, false, $opmerking);
+        $klantAccount = $klantSvc->registreerKlant($email, $wachtwoord, $familienaam, $voornaam, $adres, $telefoonnummer,false, $opmerking);
+        $_SESSION["klantAccount"] = serialize($klantAccount);
+        $_COOKIE["klantEmail"] = $email;
     } catch (Exception $e) {
         $error = "Onbekende fout: kan niet registreren";
     }
+    header("location: afrekenen.php");
+    exit(0);
 }
 $plaatsen = $plaatsSvc->toonPostcodesOverzicht();
 

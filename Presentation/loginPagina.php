@@ -4,14 +4,21 @@ require_once("header.php");
 ?>
 <section class="container">
     <div class="row m-5 bg-light">
-        <div class="col-lg-6 p-5 border-end">
-            <form class="p-4" action="login.php?action=login" method="post">
+        <div class="col-lg-6 col-sm-10 p-5 border-end">
+            <form class="p-4" action="login.php?action=aanmelden" method="post">
                 <div class="text-center">
                     <h5>Ik heb een account:</h5>
+                    <?php if ($error) {?>
+                        <span style="color: red"><?php echo $error;?></span>
+                    <?php } ?>
                 </div>
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="txtEmail" id="inputEmail" aria-describedby="emailHelp">
+                        <?php if(isset($_COOKIE["klantEmail"])) { ?>
+                        <input type="email" class="form-control" name="txtEmail" id="inputEmail" value="<?php echo$_COOKIE["klantEmail"];?>">
+                        <?php } else { ?>
+                        <input type="email" class="form-control" name="txtEmail" id="inputEmail">
+                        <?php } ?>
                 </div>
                 <div class="mb-3">
                     <label for="inputWachtwoord" class="form-label">Password</label>
@@ -22,7 +29,7 @@ require_once("header.php");
                 </div>
             </form>
         </div>
-        <div class="col-lg-6 p-5">
+        <div class="col-lg-6 col-sm-10 p-5">
             <form class="p-4" action="login.php?action=registreren" method="post">
                 <div class="text-center">
                 <h5>Ik heb geen account:</h5>
