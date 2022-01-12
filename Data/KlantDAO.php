@@ -112,7 +112,8 @@ class KlantDAO {
         try {
             $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
             $stmt = $dbh->prepare("update klanten SET email = :email, familienaam = :familienaam, voornaam = :voornaam, 
-                   telefoonnummer = :telefoonnummer, opmerking = :opmerking");
+                   telefoonnummer = :telefoonnummer, opmerking = :opmerking where klantId = :klantId");
+            $stmt->bindValue(":klantId", $klant->getKlantId());
             $stmt->bindValue(":email", $klant->getEmail());
             $stmt->bindValue(":familienaam", $klant->getFamilienaam());
             $stmt->bindValue(":voornaam", $klant->getVoornaam());

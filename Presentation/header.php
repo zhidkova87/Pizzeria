@@ -33,18 +33,14 @@
                             <?php if ($aangemeld) { ?>
                             <li class="px-5"><a href="profiel.php" class="nav-link link-light">Profiel</a></li>
                             <?php } ?>
-<!--                            <li class="px-5"><a href="#" class="nav-link link-dark">Gastenboek</a></li>-->
                             <li class="px-5"><a href="contact.php" class="nav-link link-light">Contact</a></li>
                         </ul>
                     </div>
                     <div class="col-1 d-flex flex-wrap justify-content-end">
-
                             <ul class="nav">
                                 <?php if ($aangemeld) { ?>
                                     <li class="nav-item"><a href="logout.php" class="nav-link link-light px-2">Afmelden</a></li>
-                                <?php } else { ?>
-                                    <li class="nav-item"><a href="login.php" class="nav-link link-light px-2">Aanmelden</a></li>
-                                <?php } ?>
+                                <?php }  ?>
                             </ul>
 
                     </div>

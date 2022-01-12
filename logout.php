@@ -8,11 +8,10 @@ if(!isset($_SESSION))
     session_start(); 
 }
 
-
 session_destroy(); 
 
 $aangemeld = false;
-header("location: login.php");
+header("location: index.php");
 exit(0);
 
 

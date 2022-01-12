@@ -27,8 +27,8 @@ if (isset($_GET["action"]) && ($_GET["action"]) === "aanmelden") {
     $wachtwoord = $_POST["txtWachtwoord"];
 
     try {
-        $klantAccount = $klantSvc->loginKlant($email, $wachtwoord);
-        $_SESSION["klantAccount"] = serialize($klantAccount);
+        $klant = $klantSvc->loginKlant($email, $wachtwoord);
+        $_SESSION["klantAccount"] = serialize($klant);
         setcookie("email", $email);
         header("location: afrekenen.php");
 
@@ -54,8 +54,8 @@ if (isset($_GET["action"]) && $_GET["action"] === "registreren") {
     $wachtwoord = $_POST["txtWachtwoord"];
     try {
         $adres = $adresSvc->createAdres($straat, $huisnummer, $bus, $postcode);
-        $klantAccount = $klantSvc->registreerKlant($email, $wachtwoord, $familienaam, $voornaam, $adres, $telefoonnummer,false, $opmerking);
-        $_SESSION["klantAccount"] = serialize($klantAccount);
+        $klant = $klantSvc->registreerKlant($email, $wachtwoord, $familienaam, $voornaam, $adres, $telefoonnummer,false, $opmerking);
+        $_SESSION["klantAccount"] = serialize($klant);
         setcookie("email", $email);
     } catch (Exception $e) {
         $error = "Onbekende fout: kan niet registreren";

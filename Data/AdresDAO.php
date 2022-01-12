@@ -55,7 +55,8 @@ class AdresDAO {
         try {
             $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
             $stmt = $dbh->prepare("update adressen SET straat = :straat, huisnummer = :huisnummer, 
-                   bus = :bus, plaatsId = :plaatsId");
+                   bus = :bus, plaatsId = :plaatsId where adresId = :adresId");
+            $stmt->bindValue(":adresId", $adres->getAdresId());
             $stmt->bindValue(":straat", $adres->getStraat());
             $stmt->bindValue(":huisnummer", $adres->getHuisnummer());
             $stmt->bindValue(":bus", $adres->getBus());

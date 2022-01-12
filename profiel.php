@@ -15,11 +15,13 @@ if(!isset($_SESSION["klantAccount"]))
 } else {
     $aangemeld = true;
 }
+
 $klantSvc = new KlantService();
 $adresSvc = new AdresService();
 $plaatsSvc = new PlaatsService();
 $plaatsen = $plaatsSvc->toonPostcodesOverzicht();
 $klant = unserialize($_SESSION["klantAccount"]);
+
 
 if(isset($_POST["btnBewerken"])) {
     $email = $_POST["txtEmail"];
