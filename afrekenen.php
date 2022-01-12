@@ -27,9 +27,10 @@ $error = "";
 $postcode = (int)($klant->getAdres()->getPlaats()->getPostcode());
 
 
-if($postcode> 9050)
-    $error = "Momenteel is enkel afhaling mogelijk voor je gemeente.";
-
+if($postcode > 9050) {
+    $wordtNietGeleverd = true;
+    $error = "Momenteel is levering niet mogelijk in je gemeente.";
+}
 if(isset($_POST["btnBewerken"])) {
     header("location: profiel.php");
     exit(0);

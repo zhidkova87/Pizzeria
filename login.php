@@ -29,7 +29,7 @@ if (isset($_GET["action"]) && ($_GET["action"]) === "aanmelden") {
     try {
         $klantAccount = $klantSvc->loginKlant($email, $wachtwoord);
         $_SESSION["klantAccount"] = serialize($klantAccount);
-        $_COOKIE["klantEmail"] = $email;
+        setcookie("email", $email);
         header("location: afrekenen.php");
 
     } catch (UserNotFoundException $e) {
@@ -56,7 +56,7 @@ if (isset($_GET["action"]) && $_GET["action"] === "registreren") {
         $adres = $adresSvc->createAdres($straat, $huisnummer, $bus, $postcode);
         $klantAccount = $klantSvc->registreerKlant($email, $wachtwoord, $familienaam, $voornaam, $adres, $telefoonnummer,false, $opmerking);
         $_SESSION["klantAccount"] = serialize($klantAccount);
-        $_COOKIE["klantEmail"] = $email;
+        setcookie("email", $email);
     } catch (Exception $e) {
         $error = "Onbekende fout: kan niet registreren";
     }

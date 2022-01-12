@@ -14,8 +14,8 @@ require_once("header.php");
                 </div>
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">Email address</label>
-                        <?php if(isset($_COOKIE["klantEmail"])) { ?>
-                        <input type="email" class="form-control" name="txtEmail" id="inputEmail" value="<?php echo$_COOKIE["klantEmail"];?>">
+                        <?php if(isset($_COOKIE["email"])) { ?>
+                        <input type="email" class="form-control" name="txtEmail" id="inputEmail" value="<?php echo$_COOKIE["email"];?>">
                         <?php } else { ?>
                         <input type="email" class="form-control" name="txtEmail" id="inputEmail">
                         <?php } ?>

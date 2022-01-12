@@ -38,15 +38,19 @@ require_once ("header.php");
                     <div class="col-lg-10 text-start">
                         <h6><?php echo $klant->getFamilienaam() . " " . $klant->getVoornaam();?></h6>
                         <?php if($klant->getAdres()->getBus() === "") { ?>
-                            <span><?php echo $klant->getAdres()->getStraat() . " " . $klant->getAdres()->getHuisnummer();?></span><br/>
+                            <span><?php echo $klant->getAdres()->getStraat() . " " . $klant->getAdres()->getHuisnummer();?></span>
+                            <br/>
                         <?php } else { ?>
-                        <span><?php echo $klant->getAdres()->getStraat() . " " . $klant->getAdres()->getHuisnummer() . "/" . $klant->getAdres()->getBus();?></span><br/>
+                        <span><?php echo $klant->getAdres()->getStraat() . " " . $klant->getAdres()->getHuisnummer() . "/" . $klant->getAdres()->getBus();?></span>
+                            <br/>
                         <?php } ?>
                         <span><?php echo $klant->getAdres()->getPlaats()->getPostcode() . " " . $klant->getAdres()->getPlaats()->getGemeente();?>
+                            <br/>
+                        <span><?php echo $klant->getTelefoonnummer();?>
                             <?php if ($error) {?>
                                 <p style="color: red"><?php echo $error?></p>
                             <?php } ?>
-                            <span><?php echo $klant->getTelefoonnummer();?>
+
                     </div>
                     <div class="col-lg-2 text-end">
                         <form action="afrekenen.php" method="post">
@@ -67,7 +71,11 @@ require_once ("header.php");
                             </div>
                             <div class="row justify-content-end">
                                 <button class="col-lg-4 btn btn-secondary btn-sm m-3" name="btnWinkelmandje">Bestelling bewerken</button>
+                            <?php if($wordtNietGeleverd) { ?>
+                                <button class="col-lg-4 btn btn-secondary btn-sm m-3" name="btnAfrekenen" disabled>Bestelling plaatsen</button>
+                            <?php } else { ?>
                                 <button class="col-lg-4 btn btn-secondary btn-sm m-3" name="btnAfrekenen">Bestelling plaatsen</button>
+                               <?php } ?>
                             </div>
                         </form>
                     </div>
