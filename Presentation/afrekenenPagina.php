@@ -1,7 +1,7 @@
 <?php
 require_once ("header.php");
 ?>
-<section class="container bg-light text-center p-4">
+<section class="container bg-light text-center my-5 p-4">
         <h4>Bestelling overzicht</h4>
         <div class="row p-3 text-center">
             <div class="col-lg-6 border-end">
@@ -50,7 +50,6 @@ require_once ("header.php");
                             <?php if ($error) {?>
                                 <p style="color: red"><?php echo $error?></p>
                             <?php } ?>
-
                     </div>
                     <div class="col-lg-2 text-end">
                         <form action="afrekenen.php" method="post">

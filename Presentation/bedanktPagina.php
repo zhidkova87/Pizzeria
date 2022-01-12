@@ -7,7 +7,7 @@ require_once ("header.php");
         <div class="text-center">
             <div class="text-white">
                 <h1 id="italie">Bedankt voor je bestelling!</h1>
-                <h5 class="fw-normal">Deze wordt zo snel mogelijk voor je klaargemaakt.</h5>
+                <h5 class="fw-normal pt-2">Deze wordt zo snel mogelijk voor je klaargemaakt en geleverd.</h5>
             </div>
             <img src="../img/process.jpg" alt="wordt gemaakt" width="650" class="p-5">
 <!--            <form action="bedankt.php" method="post">-->
