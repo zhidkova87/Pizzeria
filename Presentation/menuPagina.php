@@ -2,24 +2,25 @@
 declare(strict_types=1);
 require_once("header.php");
 ?>
-<section class="row justify-content-around">
-    <article class="col-lg-7">
+<section class="container">
+    <div class="row justify-content-around">
+    <article class="col-lg-8 px-2">
             <?php foreach ($producten as $product) { ?>
-                <div class="card border-secondary mb-4">
+                <div class="border-top bg-light ">
                     <form action="menu.php?productId=<?php echo $product->getProductId();?>" method="post" class="mb-0">
                         <div class="row">
                             <div class="col-lg-3">
-                                <img src="../img/<?php echo $product->getFoto();?>" alt="<?php echo $product->getNaam();?>" width="250">
+                                <img src="../img/<?php echo $product->getFoto();?>" alt="<?php echo $product->getNaam();?>" width="200">
                             </div>
-                            <div class="col-lg-6 py-2" id="card">
+                            <div class="col-lg-5 py-2" id="card">
                                 <h5><?php echo $product->getNaam();?></h5>
                                 <p><?php echo $product->getOmschrijving();?></p>
                             </div>
                             <div class="col-lg-1 py-4">
                                 <h5><?php echo $product->getPrijs() . " €";?></h5>
                             </div>
-                            <div class="col-lg-2 p-4 text-end">
-                                <button class="btn btn-outline-secondary btn-sm" name="btnToevoegen" value="<?php echo $product->getProductId();?>">In winkelmandje</button>
+                            <div class="col-lg-3 p-4 text-end">
+                                <button class="btn btn-outline-dark btn-sm" name="btnToevoegen" value="<?php echo $product->getProductId();?>">In winkelmandje</button>
                             </div>
 
                         </div>
@@ -27,7 +28,7 @@ require_once("header.php");
                 </div>
             <?php } ?>
     </article>
-    <aside class="col-lg-3 text-center bg-light p-3">
+    <aside class="col-lg-4 text-center bg-light p-3 border-start">
         <h4>Winkelmandje:</h4>
         <br/>
              <?php
@@ -40,8 +41,8 @@ require_once("header.php");
                     </div>
                  <div class="col-3">
                      <form action="menu.php" method="post">
-                         <button class="btn btn-outline-secondary btn-sm" name="btnMin" value="<?php echo $key;?>">-</button>
-                         <button class="btn btn-outline-secondary btn-sm" name="btnPlus" value="<?php echo $key;?>">+</button>
+                         <button class="btn btn-outline-dark btn-sm" name="btnMin" value="<?php echo $key;?>">-</button>
+                         <button class="btn btn-outline-dark btn-sm" name="btnPlus" value="<?php echo $key;?>">+</button>
                      </form>
                  </div>
                     <div class="col-3 text-end">
@@ -56,13 +57,14 @@ require_once("header.php");
             <h6>Total: €<?php echo " " . $total;?></h6>
         </div>
         <form action="menu.php" method="post">
-            <button class="btn btn-secondary btn-sm" name="btnAfrekenen">Afrekenen</button>
+            <button class="btn btn-dark btn-sm" name="btnAfrekenen">Afrekenen</button>
         </form>
         <?php } else {?>
             <h6>Uw winkelmandje is leeg.</h6>
         <?php } ?>
 
     </aside>
+    </div>
 </section>
 
 

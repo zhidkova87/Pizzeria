@@ -31,6 +31,8 @@ if(isset($_POST["btnToevoegen"])) {
                 $_SESSION["winkelmandje"][$productId] = 1;
             }
         }
+    header("location:menu.php");
+    exit(0);
     }
 
 if(isset($_POST["btnMin"])) {

@@ -25,7 +25,7 @@ require_once("header.php");
                     <input type="password" class="form-control" name="txtWachtwoord" id="inputWachtwoord">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-outline-secondary btn-sm">Login</button>
+                    <button type="submit" class="btn btn-dark btn-sm">Login</button>
                 </div>
             </form>
         </div>
@@ -80,7 +80,7 @@ require_once("header.php");
                     <input type="password" class="form-control" name="txtWachtwoord" id="inputWachtwoord" required>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-outline-secondary btn-sm">Maak een account aan</button>
+                    <button type="submit" class="btn btn-dark btn-sm">Maak een account aan</button>
                 </div>
             </form>
         </div>

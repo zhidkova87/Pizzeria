@@ -8,7 +8,7 @@ require_once("header.php");
         <div class="col-lg-3">
             <img src="/img/pizzaChef.jpg" alt="Pizza Chef" width="300">
         </div>
-        <div class="col-lg-8 text-start ps-5">
+        <div class="col-lg-9 text-start ps-5">
             <p>
                 Pizzeria is een Italiaans restaurant in Gent gespecialiseerd in pizza.
             </p>

@@ -49,7 +49,7 @@ require_once ("header.php");
                 <input type="email" class="form-control" name="txtEmail" id="inputEmail" value="<?php echo $klant->getEmail();?>" required>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-secondary btn-sm" name="btnBewerken">Bewerken</button>
+                <button type="submit" class="btn btn-dark btn-sm" name="btnBewerken">Bewerken</button>
             </div>
         </form>
     </div>

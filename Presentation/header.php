@@ -14,13 +14,12 @@
     <title>Pizzeria</title>
 </head>
 <body>
-<header>
-
-
+<header class="bg-dark">
+    <div class="container">
         <div class="row justify-content-between">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand fs-2 ms-5" href="index.php">
+            <nav class="navbar navbar-expand-lg px-0 ">
+                <div class="container-fluid px-0">
+                    <a class="navbar-brand p-0" href="index.php">
                         <img src="../img/Pizzeria.png" alt="Pizzeria" width="100" id="logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,30 +27,31 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                         <ul class="navbar-nav" id="menu">
-                            <li class="px-5"><a href="index.php" class="nav-link link-dark">Home</a></li>
-                            <li class="px-5"><a href="menu.php" class="nav-link link-dark">Menu</a></li>
-                            <li class="px-5"><a href="about.php" class="nav-link link-dark">About</a></li>
+                            <li class="px-5"><a href="index.php" class="nav-link link-light">Home</a></li>
+                            <li class="px-5"><a href="menu.php" class="nav-link link-light">Menu</a></li>
+                            <li class="px-5"><a href="about.php" class="nav-link link-light">About</a></li>
                             <?php if ($aangemeld) { ?>
-                            <li class="px-5"><a href="profiel.php" class="nav-link link-dark">Profiel</a></li>
+                            <li class="px-5"><a href="profiel.php" class="nav-link link-light">Profiel</a></li>
                             <?php } ?>
 <!--                            <li class="px-5"><a href="#" class="nav-link link-dark">Gastenboek</a></li>-->
-                            <li class="px-5"><a href="contact.php" class="nav-link link-dark">Contact</a></li>
+                            <li class="px-5"><a href="contact.php" class="nav-link link-light">Contact</a></li>
                         </ul>
                     </div>
-                    <div class="justify-content-end">
-                        <div class="col-5 d-flex flex-wrap justify-content-end">
+                    <div class="col-1 d-flex flex-wrap justify-content-end">
+
                             <ul class="nav">
                                 <?php if ($aangemeld) { ?>
-                                    <li class="nav-item"><a href="logout.php" class="nav-link link-dark px-2">Afmelden</a></li>
+                                    <li class="nav-item"><a href="logout.php" class="nav-link link-light px-2">Afmelden</a></li>
                                 <?php } else { ?>
-                                    <li class="nav-item"><a href="login.php" class="nav-link link-dark px-4">Aanmelden</a></li>
+                                    <li class="nav-item"><a href="login.php" class="nav-link link-light px-2">Aanmelden</a></li>
                                 <?php } ?>
                             </ul>
-                        </div>
+
                     </div>
                 </div>
             </nav>
         </div>
+    </div>
 </header>
 <main>
 

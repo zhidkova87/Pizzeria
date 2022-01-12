@@ -13,8 +13,27 @@ if(!isset($_SESSION["klantAccount"]))
 } else {
     $aangemeld = true;
 }
-$bestelMoment = new DateTime();
-$productSvc = new ProductService();
+$melding = "";
+
+if(isset($_POST["btnVerstuur"])) {
+    $naam = $_POST["txtNaam"];
+    $email = $_POST["txtEmail"];
+    $onderwerp = $_POST["txtOnderwerp"];
+    $bericht = $_POST["txtBericht"];
+
+    $to = "pizzeria@gmail.be";
+    $header = "From: {$naam} . {$email}";
+
+    $versturen = mail($to, $onderwerp, $bericht, $header);
+
+    if($versturen === true ) {
+       $melding = "Message sent successfully...";
+    }else {
+        $melding = "Message could not be sent...";
+    }
+
+
+}
 
 
 
