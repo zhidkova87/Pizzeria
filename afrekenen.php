@@ -22,10 +22,21 @@ $productSvc = new ProductService();
 $bestellingSvc = new BestellingService();
 $bestellijnSvc = new BestellijnService();
 $klant = unserialize($_SESSION["klantAccount"]);
+$wordtNietGeleverd = false;
+$error = "";
+$postcode = (int)($klant->getAdres()->getPlaats()->getPostcode());
 
+
+if($postcode> 9050)
+    $error = "Momenteel is enkel afhaling mogelijk voor je gemeente.";
 
 if(isset($_POST["btnBewerken"])) {
     header("location: profiel.php");
+    exit(0);
+}
+
+if(isset($_POST["btnWinkelmandje"])) {
+    header("location: menu.php");
     exit(0);
 }
 
@@ -50,10 +61,7 @@ if(isset($_POST["btnAfrekenen"])) {
      exit(0);
 }
 
-if(isset($_POST["btnWinkelmandje"])) {
-    header("location: menu.php");
-    exit(0);
-}
+
 
 
 include_once ("Presentation/afrekenenPagina.php");

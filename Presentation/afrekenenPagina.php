@@ -35,7 +35,7 @@ require_once ("header.php");
                 <h5>Klant gegevens</h5>
                 <br/>
                 <div class="row ps-5 ">
-                    <div class="col-lg-6 text-start">
+                    <div class="col-lg-10 text-start">
                         <h6><?php echo $klant->getFamilienaam() . " " . $klant->getVoornaam();?></h6>
                         <?php if($klant->getAdres()->getBus() === "") { ?>
                             <span><?php echo $klant->getAdres()->getStraat() . " " . $klant->getAdres()->getHuisnummer();?></span><br/>
@@ -43,8 +43,12 @@ require_once ("header.php");
                         <span><?php echo $klant->getAdres()->getStraat() . " " . $klant->getAdres()->getHuisnummer() . "/" . $klant->getAdres()->getBus();?></span><br/>
                         <?php } ?>
                         <span><?php echo $klant->getAdres()->getPlaats()->getPostcode() . " " . $klant->getAdres()->getPlaats()->getGemeente();?>
+                            <?php if ($error) {?>
+                                <p style="color: red"><?php echo $error?></p>
+                            <?php } ?>
+                            <span><?php echo $klant->getTelefoonnummer();?>
                     </div>
-                    <div class="col-lg-6 text-end">
+                    <div class="col-lg-2 text-end">
                         <form action="afrekenen.php" method="post">
                             <button class="btn btn-secondary btn-sm" name="btnBewerken">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
