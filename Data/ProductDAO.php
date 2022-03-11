@@ -7,6 +7,7 @@ use PDO;
 use Data\DBConfig;
 use Entities\Product;
 
+
 class ProductDAO {
 
     public function getAll(): ?array
