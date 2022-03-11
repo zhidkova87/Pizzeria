@@ -4,9 +4,9 @@ namespace Data;
 
 class DBConfig {
 
-    public static $DB_CONNSTRING = "mysql: host=us-cdbr-east-05.cleardb.net;dbname=heroku_c37b8f27d984651;charset=utf8";
-    public static $DB_USERNAME = "bd1ab42fde31cd";
-    public static $DB_PASSWORD = "ae5f2a29";
+    public static $DB_CONNSTRING = "mysql://host:us-cdbr-east-05.cleardb.net;dbname=heroku_369feb02067175c;charset=utf8";
+    public static $DB_USERNAME = "b484a51c3f7b3a";
+    public static $DB_PASSWORD = "875882da";
 
 
 //$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
