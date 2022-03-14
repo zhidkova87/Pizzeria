@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 spl_autoload_register();
 
-use Pizzeria\Business\ProductService;
+use Business\ProductService;
 
 session_start();
 
