@@ -14,7 +14,7 @@ if(!isset($_SESSION["klantAccount"]))
     $aangemeld = true;
 }
 
-$productSvc = new ProductService();
+$productSvc = new Business\ProductService();
 $producten = $productSvc->toonProductenOverzicht();
 
 if(isset($_POST["btnToevoegen"])) {
