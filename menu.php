@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 spl_autoload_register();
 
-use Business\ProductService;
+use Pizzeria\Business\ProductService;
 
 session_start();
 
@@ -14,7 +14,7 @@ if(!isset($_SESSION["klantAccount"]))
     $aangemeld = true;
 }
 
-$productSvc = new Business\ProductService();
+$productSvc = new ProductService();
 $producten = $productSvc->toonProductenOverzicht();
 
 if(isset($_POST["btnToevoegen"])) {

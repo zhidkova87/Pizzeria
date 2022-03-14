@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Business;
+namespace Pizzeria\Business;
 
 use Data\ProductDAO;
 use Entities\Product;
